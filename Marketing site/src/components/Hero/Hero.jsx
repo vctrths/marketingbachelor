@@ -30,7 +30,7 @@ export default function Hero() {
           </p>
         </div>
         <div className="hero__actions">
-          <div className="hero__search">
+          <form className="hero__search" onSubmit={(e) => { e.preventDefault(); window.open('https://bachelorkaart.netlify.app/', '_blank'); }}>
             <div className="hero__search-inner">
               <div className="hero__search-icon">
                 <img src={searchIcon} alt="" />
@@ -42,9 +42,9 @@ export default function Hero() {
               />
             </div>
             <span className="hero__search-button">
-              <Button variant="primary" onClick={() => window.open('https://bachelorkaart.netlify.app/', '_blank')}>Bekijk aanbod</Button>
+              <Button variant="primary" type="submit">Bekijk aanbod</Button>
             </span>
-          </div>
+          </form>
           <div className="hero__buttons">
             <Button variant="primary" onClick={() => window.open('https://www.figma.com/proto/vNIODWdJhOTDoLXEP7bky6/Bachelorproef?page-id=679%3A498&node-id=979-1707&viewport=324%2C338%2C0.11&t=2JqO0qBYmzW9QupP-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=979%3A1707&show-proto-sidebar=0', '_blank')}>Ontdek de app</Button>
             <Button variant="secondary" onClick={() => document.getElementById('hoe-werkt-het')?.scrollIntoView({ behavior: 'smooth' })}>Hoe werkt het?</Button>
