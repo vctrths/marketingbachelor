@@ -1,14 +1,12 @@
 import { useState, useEffect } from 'react'
 import SectionHeader from '../SectionHeader/SectionHeader'
 import Button from '../Button/Button'
-import { upsertMailerLiteSubscriber } from '../../services/mailerlite'
 import iconMail from '../../assets/65eedffa60749e5b6cc606fc1c1beeb9ddb420ce.svg'
 import iconPhone from '../../assets/3c59b97f7a86e6a864e93f36bfd0862eaec5df54.svg'
 import iconDownload from '../../assets/c0fa97aa1a59af56d5947d1c07772185db2d4e89.svg'
 import iconTest from '../../assets/test_product_icon.svg'
 import plantIcon from '../../assets/8d75e753870d5d6108adfc829bb72987b196736f.svg'
 import './Contact.css'
-// Subscribe handled inline in the contact form (no separate SubscribeForm here)
 
 const contactItems = [
   { icon: iconMail, text: 'hi@groenevingers-app.be', href: 'mailto:hi@groenevingers-app.be' },
@@ -30,7 +28,6 @@ export default function Contact() {
     bericht: '',
   })
   const [errors, setErrors] = useState({})
-  const [subscribe, setSubscribe] = useState(false)
 
   const handleChange = (field) => (e) => {
     setForm((prev) => ({ ...prev, [field]: e.target.value }))
@@ -42,8 +39,6 @@ export default function Contact() {
     }
   }
 
-  const handleSubmit = async (e) => {
-    if (e && e.preventDefault) e.preventDefault()
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -87,27 +82,6 @@ export default function Contact() {
         throw new Error('Submit failed')
       }
 
-    setSubmitted(true)
-
-    // If user opted-in to subscribe, forward contact fields to MailerLite as custom fields.
-    if (subscribe && form.email) {
-      const fields = {
-        first_name: form.voornaam,
-        last_name: form.achternaam,
-        role: form.rol,
-        message: form.bericht,
-      }
-      try {
-        // Fire-and-forget; don't block the user flow on subscriber errors
-        await upsertMailerLiteSubscriber(form.email, fields)
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.error('Failed to subscribe contact to MailerLite:', err)
-      }
-    }
-
-    setForm({ voornaam: '', achternaam: '', email: '', rol: '', bericht: '' })
-    setErrors({})
       setSubmitted(true)
       setForm({ voornaam: '', achternaam: '', email: '', rol: '', bericht: '' })
       setErrors({})
