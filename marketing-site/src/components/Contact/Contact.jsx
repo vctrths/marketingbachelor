@@ -86,7 +86,9 @@ export default function Contact() {
       setForm({ voornaam: '', achternaam: '', email: '', rol: '', bericht: '' })
       setErrors({})
     } catch (error) {
-      console.error('Contact form submit failed:', error)
+      if (import.meta.env.DEV) {
+        console.error('Contact form submit failed:', error)
+      }
       setSubmitError('Versturen mislukt. Probeer opnieuw of mail naar hi@groenevingers-app.be.')
     } finally {
       setIsSubmitting(false)
@@ -115,7 +117,7 @@ export default function Contact() {
               const content = (
                 <>
                   <div className="contact__info-icon">
-                    <img src={item.icon} alt={`Icoon voor ${item.text}`} />
+                    <img src={item.icon} alt="" aria-hidden="true" loading="lazy" />
                   </div>
                   <span className="contact__info-text">{item.text}</span>
                 </>
@@ -135,7 +137,7 @@ export default function Contact() {
         <div className="contact__right">
           {submitted ? (
             <div className="contact__confirmation">
-              <img className="contact__confirmation-icon" src={plantIcon} alt="Bevestigingsicoon van een plant" />
+              <img className="contact__confirmation-icon" src={plantIcon} alt="" />
               <h3 className="contact__confirmation-title">Bedankt voor je bericht!</h3>
               <p className="contact__confirmation-text">
                 We hebben je bericht goed ontvangen en nemen zo snel mogelijk contact met je op.
@@ -158,31 +160,31 @@ export default function Contact() {
               </p>
               <div className="contact__form-row">
                 <div className="contact__field">
-                  <label className="contact__label">Voornaam</label>
-                  <input type="text" name="voornaam" className={`contact__input ${errors.voornaam ? 'contact__input--error' : ''}`} value={form.voornaam} onChange={handleChange('voornaam')} />
+                  <label className="contact__label" htmlFor="voornaam">Voornaam</label>
+                  <input type="text" id="voornaam" name="voornaam" className={`contact__input ${errors.voornaam ? 'contact__input--error' : ''}`} value={form.voornaam} onChange={handleChange('voornaam')} />
                 </div>
                 <div className="contact__field">
-                  <label className="contact__label">Achternaam</label>
-                  <input type="text" name="achternaam" className={`contact__input ${errors.achternaam ? 'contact__input--error' : ''}`} value={form.achternaam} onChange={handleChange('achternaam')} />
+                  <label className="contact__label" htmlFor="achternaam">Achternaam</label>
+                  <input type="text" id="achternaam" name="achternaam" className={`contact__input ${errors.achternaam ? 'contact__input--error' : ''}`} value={form.achternaam} onChange={handleChange('achternaam')} />
                 </div>
               </div>
               <div className="contact__field contact__field--full">
-                <label className="contact__label">E-mailadres</label>
-                <input type="email" name="email" className={`contact__input ${errors.email ? 'contact__input--error' : ''}`} value={form.email} onChange={handleChange('email')} />
+                <label className="contact__label" htmlFor="email">E-mailadres</label>
+                <input type="email" id="email" name="email" className={`contact__input ${errors.email ? 'contact__input--error' : ''}`} value={form.email} onChange={handleChange('email')} />
               </div>
               <div className="contact__field contact__field--full">
-                <label className="contact__label">Ik ben een...</label>
-                <select name="rol" className={`contact__input contact__select ${errors.rol ? 'contact__input--error' : ''}`} value={form.rol} onChange={handleChange('rol')}>
+                <label className="contact__label" htmlFor="rol">Ik ben een...</label>
+                <select id="rol" name="rol" className={`contact__input contact__select ${errors.rol ? 'contact__input--error' : ''}`} value={form.rol} onChange={handleChange('rol')}>
                   <option value="" disabled></option>
                   <option value="tuineigenaar">Tuineigenaar</option>
                   <option value="tuinzoeker">Tuinzoeker</option>
                 </select>
               </div>
               <div className="contact__field contact__field--full">
-                <label className="contact__label">Bericht</label>
-                <textarea name="bericht" className={`contact__textarea ${errors.bericht ? 'contact__input--error' : ''}`} value={form.bericht} onChange={handleChange('bericht')} />
+                <label className="contact__label" htmlFor="bericht">Bericht</label>
+                <textarea id="bericht" name="bericht" className={`contact__textarea ${errors.bericht ? 'contact__input--error' : ''}`} value={form.bericht} onChange={handleChange('bericht')} />
               </div>
-              {submitError ? <p className="contact__submit-error">{submitError}</p> : null}
+              {submitError ? <p className="contact__submit-error" role="alert">{submitError}</p> : null}
               <Button variant="primary" type="submit" fullWidth disabled={isSubmitting} className={shaking ? 'button--shake' : ''}>
                 {isSubmitting ? 'Bezig met versturen...' : 'Verstuur een bericht'}
               </Button>

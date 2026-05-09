@@ -45,7 +45,7 @@ export default function Team() {
               <div className="team__card-bottom">
                 <p className="team__card-bio">{member.bio}</p>
                 <div className="team__card-photo">
-                  <img src={member.photo} alt={`Portret van ${member.name}`} />
+                  <img src={member.photo} alt={`Portret van ${member.name}`} loading="lazy" decoding="async" />
                 </div>
               </div>
             </div>

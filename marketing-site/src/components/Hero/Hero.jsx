@@ -30,8 +30,10 @@ export default function Hero() {
       showToast('Dank je voor je inschrijving! We nemen snel contact op.')
       setEmail('')
     } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error('MailerLite subscribe failed:', error)
+      if (import.meta.env.DEV) {
+        // eslint-disable-next-line no-console
+        console.error('MailerLite subscribe failed:', error)
+      }
       showToast(error.message || 'Inschrijving mislukt. Probeer het later opnieuw.')
     } finally {
       setIsSubmitting(false)
@@ -42,10 +44,10 @@ export default function Hero() {
     <section className="hero">
       <Toast message={toastMessage} visible={toastVisible} onClose={() => setToastVisible(false)} />
       <div className="hero__background">
-        <img src={bgCircles} alt="Decoratieve achtergrondcirkels" />
+        <img src={bgCircles} alt="" aria-hidden="true" width="1440" height="800" />
       </div>
       <div className="hero__plant">
-        <img src={plantImg} alt="Plant in een terracotta pot" />
+        <img src={plantImg} alt="Plant in een terracotta pot" fetchPriority="high" decoding="async" width="600" height="600" />
       </div>
       <Navbar />
       <div className="hero__content">
@@ -60,6 +62,8 @@ export default function Hero() {
             <div className="hero__search-inner">
               <input
                 type="email"
+                id="hero-email"
+                aria-label="E-mailadres"
                 className="hero__search-input"
                 placeholder="Voer je email in voor meer info"
                 value={email}

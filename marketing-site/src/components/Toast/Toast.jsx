@@ -11,8 +11,8 @@ export default function Toast({ message, visible, onClose }) {
   }, [visible, onClose])
 
   return (
-    <div className={`toast ${visible ? 'toast--visible' : ''}`}>
-      <img className="toast__icon" src={plantIcon} alt="Plant icoon" />
+    <div className={`toast ${visible ? 'toast--visible' : ''}`} role="status" aria-live="polite">
+      <img className="toast__icon" src={plantIcon} alt="" />
       <span className="toast__message">{message}</span>
     </div>
   )

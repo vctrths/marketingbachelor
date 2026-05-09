@@ -70,7 +70,7 @@
 .hero__subtitle {
   font-family: var(--font-heading);
   font-weight: 400;
-  font-size: var(--text-primary);
+  font-size: var(--text-h5);
   line-height: normal;
   color: #000;
   max-width: 563px;

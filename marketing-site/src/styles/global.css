@@ -2,8 +2,6 @@
    Global Styles - Groene Vingers
    ======================================== */
 
-@import url('https://api.fontshare.com/v2/css?f[]=satoshi@400&display=swap');
-
 *,
 *::before,
 *::after {
@@ -48,4 +46,21 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   line-height: normal;
+}
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  z-index: 10000;
+  padding: 8px 16px;
+  background: var(--surface-brand);
+  color: var(--text-inversed);
+  font-family: var(--font-heading);
+  font-size: var(--text-body);
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  top: 0;
 }
