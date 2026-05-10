@@ -16,19 +16,20 @@ export default function Navbar() {
     <Toast message="Binnenkort beschikbaar!" visible={toastVisible} onClose={() => setToastVisible(false)} />
     <nav className="navbar">
       <div className="navbar__logo">
-        <img src={logo} alt="Groene Vingers" />
+        <img src={logo} alt="Groene Vingers" fetchPriority="high" width="160" height="40" />
       </div>
       <button
         className="navbar__hamburger"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label="Menu"
         aria-expanded={menuOpen}
+        aria-controls="navbar-menu"
       >
         <span className="navbar__hamburger-line" />
         <span className="navbar__hamburger-line" />
         <span className="navbar__hamburger-line" />
       </button>
-      <div className={`navbar__menu ${menuOpen ? 'navbar__menu--open' : ''}`}>
+      <div id="navbar-menu" className={`navbar__menu ${menuOpen ? 'navbar__menu--open' : ''}`}>
         <a href="#zoek" className="navbar__link" onClick={closeMenu}>Zoek een tuin</a>
         <a href="#hoe-werkt-het" className="navbar__link" onClick={closeMenu}>Hoe werkt het</a>
         <a href="#over-ons" className="navbar__link" onClick={closeMenu}>Over ons</a>

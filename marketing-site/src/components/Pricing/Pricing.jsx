@@ -8,7 +8,7 @@ import './Pricing.css'
 
 function CheckIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="16" cy="16" r="15" stroke="#576238" strokeWidth="2" />
       <path d="M10 16l4 4 8-8" stroke="#576238" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
@@ -17,9 +17,9 @@ function CheckIcon() {
 
 function XIcon() {
   return (
-    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="16" cy="16" r="15" stroke="#b5b8a7" strokeWidth="2" />
-      <path d="M12 12l8 8M20 12l-8 8" stroke="#b5b8a7" strokeWidth="2" strokeLinecap="round" />
+    <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="16" cy="16" r="15" stroke="#6e7060" strokeWidth="2" />
+      <path d="M12 12l8 8M20 12l-8 8" stroke="#6e7060" strokeWidth="2" strokeLinecap="round" />
     </svg>
   )
 }
@@ -69,7 +69,7 @@ export default function Pricing() {
           {plans.map((plan, i) => (
             <div className="pricing__card" key={i}>
               <div className="pricing__card-icon">
-                <img src={plan.icon} alt={`Icoon van het ${plan.name} plan`} />
+                <img src={plan.icon} alt="" aria-hidden="true" loading="lazy" />
               </div>
               <div className="pricing__card-divider" />
               <div className="pricing__card-content">

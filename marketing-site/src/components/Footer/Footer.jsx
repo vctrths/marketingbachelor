@@ -18,11 +18,11 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer__bg">
-        <img src={footerBg} alt="Decoratieve footer achtergrond" />
+        <img src={footerBg} alt="" aria-hidden="true" width="1440" height="400" />
       </div>
       <div className="footer__inner">
         <div className="footer__logo">
-          <img src={footerLogo} alt="Groene Vingers" />
+          <img src={footerLogo} alt="Groene Vingers" loading="lazy" width="160" height="40" />
         </div>
         <div className="footer__right">
           <nav className="footer__nav">
@@ -35,19 +35,19 @@ export default function Footer() {
           <div className="footer__contact">
             <a className="footer__contact-item" href="mailto:info@groenevingers.be">
               <div className="footer__contact-icon">
-                <img src={iconMail} alt="E-mail icoon" />
+                <img src={iconMail} alt="" aria-hidden="true" loading="lazy" />
               </div>
               <span className="footer__contact-text">info@groenevingers.be</span>
             </a>
             <a className="footer__contact-item" href="tel:+32456323861">
               <div className="footer__contact-icon">
-                <img src={iconPhone} alt="Telefoon icoon" />
+                <img src={iconPhone} alt="" aria-hidden="true" loading="lazy" />
               </div>
               <span className="footer__contact-text">+32 456 32 38 61</span>
             </a>
             <a className="footer__contact-item footer__contact-item--top" href="https://maps.google.com/?q=Merbeekstraat+1,+3360+Bierbeek" target="_blank" rel="noopener noreferrer">
               <div className="footer__contact-icon">
-                <img src={iconLocation} alt="Locatie icoon" />
+                <img src={iconLocation} alt="" aria-hidden="true" loading="lazy" />
               </div>
               <span className="footer__contact-text footer__contact-text--multiline">
                 {`Merbeekstraat 1,\n3360 Bierbeek`}

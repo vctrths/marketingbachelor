@@ -37,13 +37,17 @@ const features = [
 
 function FeatureItem({ feature }) {
   const [open, setOpen] = useState(false)
+  const panelId = `feature-panel-${feature.number}`
+  const buttonId = `feature-btn-${feature.number}`
 
   return (
     <div className="features__accordion-item">
       <button
+        id={buttonId}
         className="features__accordion-header"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
+        aria-controls={panelId}
       >
         <div className="features__accordion-left">
           <div className="features__item-number">
@@ -57,15 +61,20 @@ function FeatureItem({ feature }) {
           height="24"
           viewBox="0 0 24 24"
           fill="none"
+          aria-hidden="true"
         >
           <path d="M6 9l6 6 6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         </svg>
       </button>
-      {open && (
-        <div className="features__accordion-body">
-          <p className="features__item-description">{feature.description}</p>
-        </div>
-      )}
+      <div
+        id={panelId}
+        className="features__accordion-body"
+        role="region"
+        aria-labelledby={buttonId}
+        hidden={!open}
+      >
+        <p className="features__item-description">{feature.description}</p>
+      </div>
     </div>
   )
 }

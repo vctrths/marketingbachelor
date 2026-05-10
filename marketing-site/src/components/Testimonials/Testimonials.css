@@ -75,7 +75,7 @@
   font-family: var(--font-body);
   font-weight: 400;
   font-size: var(--text-small);
-  color: var(--text-muted);
+  color: var(--text-secondary);
   line-height: normal;
 }
 
@@ -87,13 +87,14 @@
 }
 
 .testimonials__dot {
-  width: 10px;
-  height: 10px;
+  width: 24px;
+  height: 24px;
   border-radius: var(--radius-full);
   background-color: var(--wit-200);
+  background-clip: content-box;
   border: none;
   cursor: pointer;
-  padding: 0;
+  padding: 7px;
 }
 
 .testimonials__dot--active {

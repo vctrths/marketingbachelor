@@ -70,7 +70,7 @@ export default function Testimonials() {
               <p className="testimonials__card-quote">{t.quote}</p>
               <div className="testimonials__card-author">
                 <div className="testimonials__card-avatar">
-                  <img src={t.avatar} alt={`Profielfoto van ${t.name}`} />
+                  <img src={t.avatar} alt={`Profielfoto van ${t.name}`} loading="lazy" decoding="async" />
                 </div>
                 <div className="testimonials__card-info">
                   <span className="testimonials__card-name">{t.name}</span>
@@ -80,12 +80,14 @@ export default function Testimonials() {
             </div>
           ))}
         </div>
-        <div className="testimonials__dots">
+        <div className="testimonials__dots" role="tablist" aria-label="Testimonial navigatie">
           {testimonials.map((_, i) => (
             <button
               key={i}
               className={`testimonials__dot ${i === activeIndex ? 'testimonials__dot--active' : ''}`}
               onClick={() => handleDotClick(i)}
+              role="tab"
+              aria-selected={i === activeIndex}
               aria-label={`Ga naar testimonial ${i + 1}`}
             />
           ))}
